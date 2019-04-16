@@ -1,0 +1,50 @@
+{
+    "provider": {
+        "name": "Mission"
+    },
+    "consumer": {
+        "name": "Thanos"
+    },
+    "interactions": [
+        {
+            "providerState": "Consumer is Thanos",
+            "description": "A request to create new Mission",
+            "request": {
+                "method": "POST",
+				"headers": {
+                   "Content-Type" : "application/json"
+                },
+                "path": "/InfinityWar/missions",
+				"body": {
+				  "name": "Go and find the Soul Stone!!!!",
+				  "planet": "Vomir",
+				  "keeper": "Red skull",
+				  "stoneId": 6
+
+                }
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                   "Content-Type" : "application/json"
+                 },
+                "body": {
+                  "id":1, 
+				  "name": "Go and find the Soul Stone!!!!",
+				  "planet": "Vomir",
+				  "keeper": "Red skull",
+				  "stoneId": 6
+
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.2.0"
+        }
+    }
+}

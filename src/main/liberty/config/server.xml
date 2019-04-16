@@ -1,0 +1,27 @@
+<server description="Stone Rest API">
+
+	<featureManager>
+		<feature>jaxrs-2.1</feature>
+		<feature>jsonp-1.1</feature>
+		<feature>cdi-2.0</feature>
+		<feature>jpa-2.2</feature>
+	</featureManager>
+
+	<httpEndpoint httpPort="${default.http.port}"
+		httpsPort="${default.https.port}" id="defaultHttpEndpoint" host="*" />
+
+	<webApplication location="mission.war" contextRoot="${app.context.root}" />
+
+	<!-- Derby Library Configuration -->
+	<library id="derbyJDBCLib">
+		<fileset dir="${shared.resource.dir}" includes="derby*.jar" />
+	</library>
+
+	<!-- Datasource Configuration -->
+	<dataSource id="jpadatasource" jndiName="jdbc/jpadatasource">
+		<jdbcDriver libraryRef="derbyJDBCLib" />
+		<properties.derby.embedded
+			databaseName="MissionDB" createDatabase="create" />
+	</dataSource>
+
+</server>
