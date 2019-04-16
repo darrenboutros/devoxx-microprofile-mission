@@ -20,8 +20,8 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<!-- tag::appdetails[] -->
 		<app.name>Microprofile-Mission</app.name>
-		<testServerHttpPort>9080</testServerHttpPort>
-		<testServerHttpsPort>9443</testServerHttpsPort>
+		<testServerHttpPort>9081</testServerHttpPort>
+		<testServerHttpsPort>9444</testServerHttpsPort>
 		<!-- end::appdetails[] -->
 		<warContext>${app.name}</warContext>
 		<package.file>${project.build.directory}/${app.name}.zip</package.file>
@@ -42,6 +42,12 @@
 
 	<dependencies>
 		<!-- Open Liberty features -->
+		<dependency>
+			<groupId>io.openliberty.features</groupId>
+			<artifactId>mpRestClient-1.2</artifactId>
+			<type>esa</type>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>io.openliberty.features</groupId>
 			<artifactId>jaxrs-2.1</artifactId>
@@ -115,24 +121,24 @@
 				</configuration>
 			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <id>copy-derby-dependency</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeArtifactIds>derby</includeArtifactIds>
-                            <outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<id>copy-derby-dependency</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>derby</includeArtifactIds>
+							<outputDirectory>${project.build.directory}/liberty/wlp/usr/shared/resources/</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
 			<!-- Plugin to run unit tests -->
 			<plugin>

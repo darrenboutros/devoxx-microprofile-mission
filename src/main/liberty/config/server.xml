@@ -5,12 +5,14 @@
 		<feature>jsonp-1.1</feature>
 		<feature>cdi-2.0</feature>
 		<feature>jpa-2.2</feature>
+		<feature>mpRestClient-1.2</feature>
 	</featureManager>
 
 	<httpEndpoint httpPort="${default.http.port}"
 		httpsPort="${default.https.port}" id="defaultHttpEndpoint" host="*" />
 
-	<webApplication location="mission.war" contextRoot="${app.context.root}" />
+	<webApplication location="mission.war"
+		contextRoot="${app.context.root}" />
 
 	<!-- Derby Library Configuration -->
 	<library id="derbyJDBCLib">
